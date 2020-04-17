@@ -1,17 +1,13 @@
 const express = require('express');
-const helmet = require('helmet');
-const resourcesRouter = require('./route/resource-router.js')
-const projectRouter = require('./route/project-router.js')
 
+const ProjectsRouter = require('./projects/projects_router');
+const ResourcesRouter = require('./resources/resources_router');
 
-const db = require('./data/db.js');
 
 const server = express();
+
 server.use(express.json());
-
-
-server.use('/api/projects', projectRouter)
-server.use('/api/resources', resourcesRouter)
-
+server.use('/resources', ResourcesRouter);
+server.use('/projects', ProjectsRouter);
 
 module.exports = server; 
